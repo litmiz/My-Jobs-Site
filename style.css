@@ -1,5 +1,7 @@
 :root {
-    --textColor: #000000;
+    --textColorBlack: #000000;
+    --textColorRed: rgb(209, 32, 32);
+    --textColorLightRed: rgba(209, 32, 32, 0.5);
     --textFont: Verdana;
 }
 
@@ -8,27 +10,25 @@ body {
 }
 
 #logo {
-    width: 20%;
-    display: block;
-}
-
-#signSec {
-    float: right;
-    margin-top: 60px;
-}
-
-#signSec a {
-    font-size: 20px;
-    color: var(--textColor);
-    font-weight: bold;
+    width: 50%;
 }
 
 nav {
-    text-align: center;
+    background-color: rgb(200, 191, 231);
+    font-weight: bolder;
+    font-size: 20px;
 }
 
-nav ul li {
-    display: inline-block;
+.navbar-light .navbar-nav .active > .nav-link {
+    color: var(--textColorRed);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--textColorLightRed);
+}
+
+.navbar-light .navbar-nav :hover {
+    color: var(--textColorRed) !important;
 }
 
 main {
