@@ -3,6 +3,7 @@
     --textColorRed: rgb(209, 32, 32);
     --textColorLightRed: rgba(209, 32, 32, 0.5);
     --textFont: Verdana;
+    --backgroundColorPurple: rgb(200, 191, 231);
 }
 
 body {
@@ -14,7 +15,7 @@ body {
 }
 
 nav {
-    background-color: rgb(200, 191, 231);
+    background-color: var(--backgroundColorPurple);
     font-weight: bolder;
     font-size: 20px;
 }
@@ -51,17 +52,24 @@ main {
 footer {
     text-align: center;
     margin-top: 10%;
-    color: var(--textColor);
+    color: var(--textColorRed);
+    background-color: var(--backgroundColorPurple);
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 footer a {
     font-size: 20px;
+    color: var(--textColorRed);
 }
 
 #iconsSec {
     display: inline;
+    font-size: 25px;
 }
 
-footer i {
-    font-size: 25px;
+@media screen and (min-width: 600px) {
+    .fa-phone-square {
+        display: none;
+    }
 }
