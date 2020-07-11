@@ -4,6 +4,7 @@
     --textColorLightRed: rgba(209, 32, 32, 0.5);
     --textFont: Verdana;
     --backgroundColorPurple: rgb(200, 191, 231);
+    --backgroundGray: #DDDDDD;
 }
 
 body {
@@ -20,16 +21,24 @@ nav {
     font-size: 20px;
 }
 
-.navbar-light .navbar-nav .active > .nav-link {
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
     color: var(--textColorRed);
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-custom .navbar-nav .nav-link {
     color: var(--textColorLightRed);
 }
 
-.navbar-light .navbar-nav :hover {
-    color: var(--textColorRed) !important;
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:focus .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: var(--textColorRed);
+}
+
+.navbar-custom .dropdown-item:hover {
+    color: var(--textColorRed);
+    background-color: var(--backgroundGray);
 }
 
 main {
@@ -59,7 +68,7 @@ footer {
 }
 
 footer a {
-    font-size: 20px;
+    font-size: 25px;
     color: var(--textColorRed);
 }
 
