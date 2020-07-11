@@ -1,18 +1,30 @@
-html {
-    width: 100%;
-    height: 100%;
+:root {
+    --textColor: #000000;
+    --textFont: Verdana;
 }
 
 body {
-    text-align: center;
+    font-family: var(--textFont)
 }
 
 #logo {
-    float: left;
+    width: 20%;
+    display: block;
 }
 
-header a {
+#signSec {
     float: right;
+    margin-top: 60px;
+}
+
+#signSec a {
+    font-size: 20px;
+    color: var(--textColor);
+    font-weight: bold;
+}
+
+nav {
+    text-align: center;
 }
 
 nav ul li {
@@ -20,20 +32,36 @@ nav ul li {
 }
 
 main {
-    margin-top: 10%;
+    margin-top: 2%;
+    text-align: center;
 }
 
-h1 {
-    display: block;
-}
-
-main div {
+#jobsArea {
     display: inline-block;
     border: 1px solid black;
     width: 30%;
     height: 150%;
+    margin-top: 2%;
+}
+
+.jobLocation {
+    margin-bottom: 0px;
 }
 
 footer {
+    text-align: center;
     margin-top: 10%;
+    color: var(--textColor);
+}
+
+footer a {
+    font-size: 20px;
+}
+
+#iconsSec {
+    display: inline;
+}
+
+footer i {
+    font-size: 25px;
 }
