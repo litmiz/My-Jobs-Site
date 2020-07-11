@@ -6,6 +6,7 @@
     --headerFont: 'Arial Black';
     --backgroundColorPurple: rgb(200, 191, 231);
     --backgroundGray: #DDDDDD;
+    --favoriteColor: #ffd700;
 }
 
 body {
@@ -76,19 +77,48 @@ input {
 
 #jobsArea {
     display: inline-block;
-    border: 1px solid black;
-    width: 30%;
-    height: 150%;
     margin-top: 2%;
 }
 
-.jobLocation {
+.jobsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.jobDiv {
+    border: 2px solid var(--textColorRed);
+    padding: 1%;
+    width: 400px;
+    margin-top: 1%;
+}
+
+@media screen and (max-width: 600px) {
+    .jobDiv {
+        border: 2px solid var(--textColorRed);
+        padding: 1%;
+        width: 80%;
+        margin-top: 1%;
+    }
+}
+
+.jobDiv .far {
+    color: var(--favoriteColor);
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.jobDiv a {
+    color: var(--textColorRed);
+}
+
+.jobAreaP {
     margin-bottom: 0px;
 }
 
 footer {
     text-align: center;
-    margin-top: 10%;
+    margin-top: 2%;
     color: var(--textColorRed);
     background-color: var(--backgroundColorPurple);
     padding-top: 1%;
