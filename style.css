@@ -3,6 +3,7 @@
     --textColorRed: rgb(209, 32, 32);
     --textColorLightRed: rgba(209, 32, 32, 0.5);
     --textFont: Verdana;
+    --headerFont: 'Arial Black';
     --backgroundColorPurple: rgb(200, 191, 231);
     --backgroundGray: #DDDDDD;
 }
@@ -41,9 +42,36 @@ nav {
     background-color: var(--backgroundGray);
 }
 
+.navbar-custom .navbar-toggler-icon i {
+    color: var(--textColorRed);
+    font-size: 32px;
+}
+
 main {
     margin-top: 2%;
     text-align: center;
+}
+
+h1 {
+    font-family: var(--headerFont);
+}
+
+input {
+    margin-top: 15px;
+    text-align: center;
+    border: 1px solid var(--textColorRed);
+    color: var(--textColorRed);
+    width: 220px;
+}
+
+#searchBtn {
+    margin-top: 15px;
+    background-color: var(--backgroundColorPurple);
+    color: var(--textColorRed);
+    border: 1px solid var(--textColorRed);
+    font-family: var(--textFont);
+    font-weight: bolder;
+    font-size: 18px;
 }
 
 #jobsArea {
@@ -70,11 +98,11 @@ footer {
 footer a {
     font-size: 25px;
     color: var(--textColorRed);
+    display: inline;
 }
 
-#iconsSec {
-    display: inline;
-    font-size: 25px;
+footer a :hover {
+    color: var(--textColorLightRed);
 }
 
 @media screen and (min-width: 600px) {
