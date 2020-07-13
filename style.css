@@ -6,6 +6,7 @@
     --headerFont: 'Arial Black';
     --backgroundColorPurple: rgb(200, 191, 231);
     --backgroundGray: #DDDDDD;
+    --backgroundWhite: rgba(255, 255, 255, 0.5);
     --favoriteColor: #ffd700;
 }
 
@@ -49,8 +50,15 @@ nav {
 }
 
 main {
-    margin-top: 2%;
+    padding-top: 2%;
     text-align: center;
+    /* background-image: url(background.jpg); */
+    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2)), url(background.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 2%;
 }
 
 h1 {
@@ -60,7 +68,7 @@ h1 {
 input {
     margin-top: 15px;
     text-align: center;
-    border: 1px solid var(--textColorRed);
+    border: 2px solid var(--textColorRed);
     color: var(--textColorRed);
     width: 220px;
 }
@@ -69,7 +77,7 @@ input {
     margin-top: 15px;
     background-color: var(--backgroundColorPurple);
     color: var(--textColorRed);
-    border: 1px solid var(--textColorRed);
+    border: 2px solid var(--textColorRed);
     font-family: var(--textFont);
     font-weight: bolder;
     font-size: 18px;
@@ -80,6 +88,10 @@ input {
     margin-top: 2%;
 }
 
+#jobsArea h2 {
+    font-weight: bold;
+}
+
 .jobsContainer {
     display: flex;
     flex-wrap: wrap;
@@ -87,10 +99,12 @@ input {
 }
 
 .jobDiv {
-    border: 2px solid var(--textColorRed);
+    background-color: var(--backgroundWhite);
+    border: 3px solid var(--textColorRed);
     padding: 1%;
     width: 400px;
     margin-top: 1%;
+    border-radius: 30px;
 }
 
 @media screen and (max-width: 600px) {
@@ -118,7 +132,6 @@ input {
 
 footer {
     text-align: center;
-    margin-top: 2%;
     color: var(--textColorRed);
     background-color: var(--backgroundColorPurple);
     padding-top: 1%;

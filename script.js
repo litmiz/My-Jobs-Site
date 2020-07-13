@@ -1,4 +1,6 @@
-window.onload = () => {
+window.onload = loadJobs;
+
+function loadJobs() {
     const jobsArea = document.getElementById('jobsArea');
     const jobsTitle = document.createElement("h2");
     const jobsContainer = document.createElement("div");
@@ -35,4 +37,4 @@ window.onload = () => {
             }); 
         })
     })
-};
+}
