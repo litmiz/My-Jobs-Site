@@ -43,6 +43,7 @@ nav {
 .navbar-custom .dropdown-item:hover {
     color: var(--textColorRed);
     background-color: var(--backgroundGray);
+    cursor: pointer;
 }
 
 .navbar-custom .navbar-toggler-icon i {
