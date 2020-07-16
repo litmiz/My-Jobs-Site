@@ -7,6 +7,7 @@
     --backgroundColorPurple: rgb(200, 191, 231);
     --backgroundGray: #DDDDDD;
     --backgroundWhite: rgba(255, 255, 255, 0.5);
+    --backgroundWhiteHover: rgba(255, 255, 255, 0.8);
     --favoriteColor: #ffd700;
 }
 
@@ -92,7 +93,7 @@ input {
     font-weight: bold;
 }
 
-.jobsContainer {
+#jobsContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -105,6 +106,11 @@ input {
     width: 400px;
     margin-top: 1%;
     border-radius: 30px;
+}
+
+.jobDiv:hover {
+    background-color: var(--backgroundWhiteHover);
+    border: 5px solid var(--textColorRed);
 }
 
 @media screen and (max-width: 600px) {
@@ -128,6 +134,21 @@ input {
 
 .jobAreaP {
     margin-bottom: 0px;
+}
+
+#noLoadBtn {
+    display: none;
+}
+
+#loadBtn {
+    display: inline-block;
+    margin-top: 2%;
+    background-color: var(--backgroundColorPurple);
+    color: var(--textColorRed);
+    border: 2px solid var(--textColorRed);
+    font-family: var(--textFont);
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 footer {
