@@ -11,19 +11,18 @@ function loadNewestJobs() {
     jobsTitle.textContent = `Newest Jobs`;
     jobsArea.appendChild(jobsTitle);
     jobsArea.appendChild(jobsContainer);
-    loadJobsfromAPI();
+    loadJobsfromAPI('', '');
 }
 
-async function loadJobsfromAPI() {
-    const response = await fetch('https://github-jobs-proxy.appspot.com/positions?description=&location');
+async function loadJobsfromAPI(description, location) {
+    const response = await fetch(`https://github-jobs-proxy.appspot.com/positions?description=${description}&location=${location}`);
     const data = await response.json();
     jobs = data;
     addJobsToHTML();
 }
 
-
 function addJobsToHTML() {
-    for (var i = lastJobNum; i < lastJobNum + 10; i++) {
+    for (var i = lastJobNum; i < lastJobNum + 10 && i < jobs.length; i++) {
         const job = jobs[i];
         const jobsContainer = document.getElementById("jobsContainer");
         const jobDiv = document.createElement("div");
@@ -54,15 +53,25 @@ function addJobsToHTML() {
     if (lastJobNum == jobs.length) {
         const loadMoreJobs = document.getElementById("loadBtn");
         loadMoreJobs.id = "noLoadBtn";
-        // loadMoreJobs.classList.add("noLoadBtn");
     }
     else {
-        // const loadMoreJobs = document.createElement("button");
-        // loadMoreJobs.classList.add("loadBtn");
-        // loadMoreJobs.textContent = `Load more jobs`;
-        // loadMoreJobs.setAttribute('onclick', 'addJobsToHTML()')
-        // jobsArea.appendChild(loadMoreJobs);
         const loadMoreJobs = document.getElementById("noLoadBtn");
-        loadMoreJobs.id = "loadBtn";
+        if (loadMoreJobs !== null) {
+            loadMoreJobs.id = "loadBtn";
+        }
     }
 }
+
+
+Array.from(document.getElementsByClassName("dropdown-item")).forEach(dropItem => {
+    dropItem.addEventListener("click", function () {
+        lastJobNum = 0;
+        const loadMoreJobs = document.getElementById("loadBtn");
+        if (loadMoreJobs !== null) {
+            loadMoreJobs.id = "noLoadBtn";
+        }
+        const jobsContainer = document.getElementById("jobsContainer");
+        jobsContainer.innerHTML = '';
+        loadJobsfromAPI(dropItem.textContent, '');
+    });
+});
