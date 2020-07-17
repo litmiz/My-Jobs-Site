@@ -30,10 +30,42 @@ async function loadJobsfromAPI(description, location) {
 // Add Jobs Details to HTML in Chunks of up to 10 Jobs
 function addJobsToHTML() {
     for (var i = lastJobNum; i < lastJobNum + 10 && i < jobs.length; i++) {
+        function addJobInfoToDiv(div) {
+            div.appendChild(jobFavorite);
+            div.appendChild(jobTitle);
+            div.appendChild(jobType);
+            div.appendChild(jobLocation);
+            div.appendChild(jobCompany);
+        }
         const job = jobs[i];
         const jobsContainer = document.getElementById("jobsContainer");
         const jobDiv = document.createElement("div");
         jobDiv.classList.add('jobDiv');
+        jobDiv.onclick = () => {
+            const modal = document.getElementById("myModal");
+            const span = document.getElementById("close");
+            const detailsDiv = document.getElementById('moreDetailsDiv');
+            detailsDiv.innerHTML = ``;
+            modal.style.display = "block";
+            addJobInfoToDiv(detailsDiv);
+            detailsDiv.innerHTML += `
+            <hr>
+            ${job.description}
+            <hr>
+            <p>How to apply:</p> ${job.how_to_apply}
+            `;
+            span.onclick = function () {
+                console.log('bataton is so good to me good to me good to me bataton is best for meeeeeeee');
+                    modal.style.display = "none";
+                    addJobInfoToDiv(jobDiv);
+            };
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    addJobInfoToDiv(jobDiv);
+                }
+            };
+        };
         const jobFavorite = document.createElement("i");
         jobFavorite.classList.add("far");
         jobFavorite.classList.add("fa-star");
@@ -41,19 +73,15 @@ function addJobsToHTML() {
         jobTitle.textContent = `${job.title}`;
         const jobType = document.createElement("p");
         jobType.textContent = `${job.type}`;
-        jobType.classList.add('jobAreaP');
+        jobType.classList.add('jobTypeP');
         const jobLocation = document.createElement("p");
-        jobLocation.textContent = `${job.location}`;
+        jobLocation.textContent = `${job.location} | `;
         jobLocation.classList.add('jobAreaP');
         const jobCompany = document.createElement("a");
         jobCompany.textContent = `${job.company}`;
         jobCompany.setAttribute('href', job.company_url);
         jobCompany.setAttribute('target', "_blank");
-        jobDiv.appendChild(jobFavorite);
-        jobDiv.appendChild(jobTitle);
-        jobDiv.appendChild(jobType);
-        jobDiv.appendChild(jobLocation);
-        jobDiv.appendChild(jobCompany);
+        addJobInfoToDiv(jobDiv);
         jobsContainer.appendChild(jobDiv);
     };
     lastJobNum = i;
@@ -99,3 +127,5 @@ document.getElementById('searchBtn').addEventListener("click", function () {
     loadJobsfromAPI(document.getElementById('descriptionInput').value, document.getElementById('locationInput').value);
 });
 /////////////////////////////////
+
+// Show More Details on Job
