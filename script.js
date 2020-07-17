@@ -46,7 +46,8 @@ function addJobsToHTML() {
             const span = document.getElementById("close");
             const detailsDiv = document.getElementById('moreDetailsDiv');
             detailsDiv.innerHTML = ``;
-            modal.style.display = "block";
+            modal.style.visibility = "visible";
+            modal.style.opacity = 1;
             addJobInfoToDiv(detailsDiv);
             detailsDiv.innerHTML += `
             <hr>
@@ -56,12 +57,14 @@ function addJobsToHTML() {
             `;
             span.onclick = function () {
                 console.log('bataton is so good to me good to me good to me bataton is best for meeeeeeee');
-                    modal.style.display = "none";
+                    modal.style.visibility = "hidden";
+                    modal.style.opacity = 0;
                     addJobInfoToDiv(jobDiv);
             };
             window.onclick = function (event) {
                 if (event.target == modal) {
-                    modal.style.display = "none";
+                    modal.style.visibility = "hidden";
+                    modal.style.opacity = 0;
                     addJobInfoToDiv(jobDiv);
                 }
             };

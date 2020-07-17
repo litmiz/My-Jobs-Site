@@ -157,7 +157,9 @@ input {
 }
 
 .modal {
-    display: none;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -166,6 +168,7 @@ input {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
+    transition: opacity 600ms, visibility 600ms;
 }
 
 #modal-content {
