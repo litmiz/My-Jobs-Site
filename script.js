@@ -31,7 +31,6 @@ async function loadJobsfromAPI(description, location) {
 function addJobsToHTML() {
     for (var i = lastJobNum; i < lastJobNum + 10 && i < jobs.length; i++) {
         function addJobInfoToDiv(div) {
-            div.appendChild(jobFavorite);
             div.appendChild(jobTitle);
             div.appendChild(jobType);
             div.appendChild(jobLocation);
@@ -84,6 +83,7 @@ function addJobsToHTML() {
         jobCompany.textContent = `${job.company}`;
         jobCompany.setAttribute('href', job.company_url);
         jobCompany.setAttribute('target', "_blank");
+        jobDiv.appendChild(jobFavorite);
         addJobInfoToDiv(jobDiv);
         jobsContainer.appendChild(jobDiv);
     };
