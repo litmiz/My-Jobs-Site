@@ -51,10 +51,13 @@ nav {
     font-size: 32px;
 }
 
+#starredJobs:hover {
+    cursor: pointer;
+}
+
 main {
     padding-top: 2%;
     text-align: center;
-    /* background-image: url(background.jpg); */
     background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2)), url(background.jpg);
     background-attachment: fixed;
     background-position: center;
@@ -123,10 +126,19 @@ input {
     }
 }
 
-.far {
+.fa-star {
     color: var(--favoriteColor);
     font-size: 25px;
     margin-bottom: 10px;
+}
+
+.fa-star:hover {
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.jobDiv h4:hover {
+    cursor: pointer;
 }
 
 .jobDiv a {

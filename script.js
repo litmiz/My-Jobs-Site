@@ -41,7 +41,13 @@ function addJobsToHTML() {
         const jobsContainer = document.getElementById("jobsContainer");
         const jobDiv = document.createElement("div");
         jobDiv.classList.add('jobDiv');
-        jobDiv.onclick = () => {
+        const jobFavorite = document.createElement("i");
+        jobFavorite.onclick = () => addOrRemoveFavorites(jobFavorite, job);
+        jobFavorite.classList.add(localStorage.getItem(job.id) === null ? "far" : "fas");
+        jobFavorite.classList.add("fa-star");
+        const jobTitle = document.createElement("h4");
+        jobTitle.textContent = `${job.title}`;
+        jobTitle.onclick = () => {
             const modal = document.getElementById("myModal");
             const span = document.getElementById("close");
             const detailsDiv = document.getElementById('moreDetailsDiv');
@@ -56,10 +62,9 @@ function addJobsToHTML() {
             <p>How to apply:</p> ${job.how_to_apply}
             `;
             span.onclick = function () {
-                console.log('bataton is so good to me good to me good to me bataton is best for meeeeeeee');
-                    modal.style.visibility = "hidden";
-                    modal.style.opacity = 0;
-                    addJobInfoToDiv(jobDiv);
+                modal.style.visibility = "hidden";
+                modal.style.opacity = 0;
+                addJobInfoToDiv(jobDiv);
             };
             window.onclick = function (event) {
                 if (event.target == modal) {
@@ -69,11 +74,6 @@ function addJobsToHTML() {
                 }
             };
         };
-        const jobFavorite = document.createElement("i");
-        jobFavorite.classList.add("far");
-        jobFavorite.classList.add("fa-star");
-        const jobTitle = document.createElement("h4");
-        jobTitle.textContent = `${job.title}`;
         const jobType = document.createElement("p");
         jobType.textContent = `${job.type}`;
         jobType.classList.add('jobTypeP');
@@ -90,7 +90,9 @@ function addJobsToHTML() {
     lastJobNum = i;
     if (lastJobNum == jobs.length) {
         const loadMoreJobs = document.getElementById("loadBtn");
-        loadMoreJobs.id = "noLoadBtn";
+        if (loadMoreJobs !== null) {
+            loadMoreJobs.id = "noLoadBtn";
+        }
     }
     else {
         const loadMoreJobs = document.getElementById("noLoadBtn");
@@ -131,4 +133,32 @@ document.getElementById('searchBtn').addEventListener("click", function () {
 });
 /////////////////////////////////
 
-// Show More Details on Job
+// Add && Remove Jobs to && from Local Storage
+function addOrRemoveFavorites(jobI, job) {
+    if (localStorage.getItem(job.id) === null) {
+        localStorage.setItem(job.id, JSON.stringify(job));
+        jobI.classList.remove("far");
+        jobI.classList.add("fas");
+    }
+    else {
+        localStorage.removeItem(job.id);
+        jobI.classList.remove("fas");
+        jobI.classList.add("far");
+    }
+}
+document.getElementById("starredJobs").addEventListener('click', () => {
+    lastJobNum = 0;
+    const jobsContainer = document.getElementById("jobsContainer");
+    jobsContainer.innerHTML = '';
+    document.getElementById('jobsMainTitle').textContent = `Starred Jobs`;
+    jobs = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        jobs.push(JSON.parse(localStorage.getItem(key)));
+    }
+    addJobsToHTML();
+    if (jobs.length == 0){
+        document.getElementById('jobsMainTitle').textContent = `No Starred Jobs`;
+    }
+});
+/////////////////////////////////
